@@ -59,6 +59,11 @@ class Connection extends Thread {
 					resultado.add(temp);
 					contador++;
 					break;
+				case REQUISICAO:
+					BigDecimal valor = new BigDecimal(contador);
+					temp = valor;
+					resultado.add(temp);
+					break;
 				}
 				
 				msgOut = new Mensagem();

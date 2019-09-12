@@ -52,6 +52,12 @@ public class TCPClient {
 				out.writeObject(msg);
 				recebido = (Mensagem) in.readObject();
 				System.out.println("Received: " + recebido.getNumeros().get(0).toString());
+				
+				// REQ
+				msg = new Mensagem(TipoOperacao.REQUISICAO, numeros);
+				out.writeObject(msg);
+				recebido = (Mensagem) in.readObject();
+				System.out.println("Requisições atendidas: " + recebido.getNumeros().get(0).toString());
 
 			
 			} catch (IndexOutOfBoundsException e) {

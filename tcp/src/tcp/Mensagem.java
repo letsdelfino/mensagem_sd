@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Mensagem implements Serializable {
 	public enum TipoOperacao {
-		SOMA, MULTIPLICACAO, DIVISAO, SUBTRACAO
+		SOMA, MULTIPLICACAO, DIVISAO, SUBTRACAO, REQUISICAO
 	}
 
 	private TipoOperacao tipoOperacao;
