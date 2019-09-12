@@ -23,8 +23,8 @@ public class TCPClient {
 			s = new Socket("localhost", serverPort);
 			s.setSoTimeout(3000);
 			s.setKeepAlive(true);
-			ObjectInputStream in = new ObjectInputStream(s.getInputStream());
 			ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+			ObjectInputStream in = new ObjectInputStream(s.getInputStream());
 			Mensagem recebido;
 			try {
 				// SOMA
@@ -32,11 +32,11 @@ public class TCPClient {
 				out.writeObject(msg);
 				recebido = (Mensagem) in.readObject();
 				System.out.println("Received: " + recebido.getNumeros().get(0).toString());
-				out.reset();
+				// out.reset();
 
 				// MULT
 				msg = new Mensagem(TipoOperacao.MULTIPLICACAO, numeros);
-				out = new ObjectOutputStream(out);
+				// out = new ObjectOutputStream(out);
 				out.writeObject(msg);
 				recebido = (Mensagem) in.readObject();
 				System.out.println("Received: " + recebido.getNumeros().get(0).toString());
@@ -53,11 +53,7 @@ public class TCPClient {
 				recebido = (Mensagem) in.readObject();
 				System.out.println("Received: " + recebido.getNumeros().get(0).toString());
 
-				// REQ_ATEN
-				msg = new Mensagem(TipoOperacao.REQUISICOES_ATENDIDAS, numeros);
-				out.writeObject(msg);
-				recebido = (Mensagem) in.readObject();
-				System.out.println("Received: " + recebido.getNumeros().get(0).toString());
+			
 			} catch (IndexOutOfBoundsException e) {
 				System.out.println("Resposta não enviada");
 			}

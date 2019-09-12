@@ -9,7 +9,6 @@ public class TCPServer {
 	public static void main(String args[]) {
 		try {
 			int serverPort = 8989;
-			//int serverPort = new Integer(args[0]);
 			ServerSocket listenSocket = new ServerSocket(serverPort);
 			while (true) {
 				Socket clientSocket = listenSocket.accept();
