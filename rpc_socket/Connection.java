@@ -46,6 +46,14 @@ class Connection extends Thread {
 					mensagemSaida.adicionarArgumento(((BigDecimal) mensagemEntrada.getArgumento(0))
 							.multiply((BigDecimal) mensagemEntrada.getArgumento(1)));
 					break;
+				case SUBTRACAO:
+					mensagemSaida.adicionarArgumento(((BigDecimal) mensagemEntrada.getArgumento(0))
+							.subtraction((BigDecimal) mensagemEntrada.getArgumento(1)));
+					break;	
+				case DIVISAO:
+					mensagemSaida.adicionarArgumento(((BigDecimal) mensagemEntrada.getArgumento(0))
+							.division((BigDecimal) mensagemEntrada.getArgumento(1)));
+					break;	
 
 				}
 			} catch (ClassNotFoundException e) {

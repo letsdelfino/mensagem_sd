@@ -17,6 +17,9 @@ public class StubCliente implements Calculadora {
 
 			mensagem = new Mensagem();
 			mensagem.setOperacao(TipoOperacao.SOMA);
+			mensagem.setOperacao(TipoOperacao.SUBTRACAO);
+			mensagem.setOperacao(TipoOperacao.MULTIPLICACAO);
+			mensagem.setOperacao(TipoOperacao.DIVISAO);
 			mensagem.adicionarArgumento(op1);
 			mensagem.adicionarArgumento(op2);
 
