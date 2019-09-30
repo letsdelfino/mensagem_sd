@@ -11,7 +11,6 @@ public class CalculadoraImple extends UnicastRemoteObject implements Calculadora
 	public CalculadoraImple() throws RemoteException {
 		super();
 	}
-	
 	public BigDecimal adicao(BigDecimal op1, BigDecimal op2) {
 		return op1.add(op2);
 	}
@@ -24,15 +23,14 @@ public class CalculadoraImple extends UnicastRemoteObject implements Calculadora
 	public BigDecimal divisao(BigDecimal op1, BigDecimal op2) {
 		return op1.divide(op2);
 	}
-	
 	public static void main(String args[]) {
 		try {
 			CalculadoraImple obj = new CalculadoraImple();
 			Registry registry = LocateRegistry.createRegistry(4200);
-			registry.rebind("Calculadora", obj);
-			System.out.println("Servidor carregado no registry");
+			registry.rebind("OlaCalculadora", obj);
+			System.out.println("Calculadora carregada no registry");
 		} catch (Exception e) {
-			System.out.println("OlaImpl erro: " + e.getMessage());
+			System.out.println("CalcImpl erro: " + e.getMessage());
 		}
 	}
 }
