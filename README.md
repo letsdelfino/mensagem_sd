@@ -15,4 +15,4 @@ Os projetos presentes aqui são:
 
 5 - Calculadora RMI: https://github.com/letsdelfino/mensagem_sd/tree/master/rmi
 
-6 - Banco RMI versão: https://github.com/letsdelfino/mensagem_sd/tree/master/banco_rmi
+6 - Banco RMI: https://github.com/letsdelfino/mensagem_sd/tree/master/banco_rmi
