@@ -27,29 +27,31 @@ public class BancoImplementacao extends UnicastRemoteObject implements Interface
 		this.identificador = numero;
 		this.nomeCliente = nomeCliente;
 	}
+	
+	@Override
+	public BigDecimal deposito(BigDecimal op1) throws RemoteException {
+		this.saldo = saldo.add(op1);
+		return saldo;
+	}
 
 	@Override
 	public BigDecimal saque(BigDecimal valor) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		double aux = saldo.doubleValue() - valor.doubleValue();
+		if(aux >= 0){
+			this.saldo = new BigDecimal(aux);
+		}
+		return saldo;
 	}
 
 	@Override
-	public BigDecimal deposito(BigDecimal valor) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BigDecimal saldo(BigDecimal valor) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public BigDecimal saldo() throws RemoteException {
+		return saldo;
 	}
 	
 	public static void main(String args[]) {
 		try {
 			BancoImplementacao obj = new BancoImplementacao();
-			Registry registry = LocateRegistry.createRegistry(4200);
+			Registry registry = LocateRegistry.createRegistry(4020);
 			registry.rebind("OlaBanco", obj);
 			System.out.println("Banco no registry");
 		} catch (Exception e) {

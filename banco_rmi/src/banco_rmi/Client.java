@@ -6,12 +6,17 @@ import java.rmi.registry.Registry;
 
 public class Client {
 	public static void main(String[] args) {
-		//Calculadora obj = null;
-		//BigDecimal op = null;
+		Interface obj = null;
+		BigDecimal op = null;
 		try {
-			Registry registry = LocateRegistry.getRegistry("127.0.0.1", 4200);
-			//obj = (Calculadora) registry.lookup("OlaCalculadora");
-			//op = obj.adicao(new BigDecimal(5), (new BigDecimal(7)));
+			Registry registry = LocateRegistry.getRegistry("127.0.0.1", 4020);
+			obj = (Interface) registry.lookup("OlaBanco");
+			//op = obj.deposito(new BigDecimal(7));
+			//System.out.println("Depósito realizado. Saldo atual: " + op);
+			//op = obj.saque(new BigDecimal(5));
+			//System.out.println("Saque realizado. Saldo atual: " + op);
+			op = obj.saldo();
+			System.out.println("Saldo atual: " + op);
 			
 		} catch (Exception e) {
 			System.out.println("Client exception: " + e.getMessage());
