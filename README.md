@@ -14,3 +14,5 @@ Os projetos presentes aqui são:
 4 - Calculadora com rpc: https://github.com/letsdelfino/mensagem_sd/tree/master/rpc_socket 
 
 5 - Calculadora RMI: https://github.com/letsdelfino/mensagem_sd/tree/master/rmi
+
+6 - Banco RMI versão 1: https://github.com/letsdelfino/mensagem_sd/tree/master/banco_rmi
