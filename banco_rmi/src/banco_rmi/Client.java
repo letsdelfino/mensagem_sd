@@ -11,8 +11,9 @@ public class Client {
 		try {
 			Registry registry = LocateRegistry.getRegistry("127.0.0.1", 4020);
 			obj = (Interface) registry.lookup("OlaBanco");
-			//op = obj.deposito(new BigDecimal(7));
-			//System.out.println("Depósito realizado. Saldo atual: " + op);
+			Interface aux = new BancoImplementacao(1, "Leticia");
+			op = obj.deposito(new BigDecimal(7));
+			System.out.println("Depósito realizado. Saldo atual: " + op);
 			//op = obj.saque(new BigDecimal(5));
 			//System.out.println("Saque realizado. Saldo atual: " + op);
 			op = obj.saldo();
