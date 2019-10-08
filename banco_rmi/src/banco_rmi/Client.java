@@ -11,13 +11,15 @@ public class Client {
 		try {
 			Registry registry = LocateRegistry.getRegistry("127.0.0.1", 4020);
 			obj = (Interface) registry.lookup("OlaBanco");
-			Interface aux = new BancoImplementacao(1, "Leticia");
-			op = obj.deposito(new BigDecimal(7));
+			Interface aux = new BancoImplementacao(1, "Leticia", new BigDecimal("500"));
+			//op = aux.saldo();
+			//System.out.println("Saldo atual: " + op);
+			op = obj.deposito(new BigDecimal("7"));
 			System.out.println("Depósito realizado. Saldo atual: " + op);
 			//op = obj.saque(new BigDecimal(5));
 			//System.out.println("Saque realizado. Saldo atual: " + op);
-			op = obj.saldo();
-			System.out.println("Saldo atual: " + op);
+			//op = obj.saldo();
+			//System.out.println("Saldo atual: " + op);
 			
 		} catch (Exception e) {
 			System.out.println("Client exception: " + e.getMessage());

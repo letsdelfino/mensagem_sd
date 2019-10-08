@@ -23,29 +23,29 @@ public class BancoImplementacao extends UnicastRemoteObject implements Interface
 	}
 	
 	public BancoImplementacao(int numero, String nomeCliente) throws RemoteException{
-		this.saldo = new BigDecimal(0.0);
+		this.saldo = new BigDecimal("0.0");
 		this.identificador = numero;
 		this.nomeCliente = nomeCliente;
 	}
 	
 	@Override
 	public BigDecimal deposito(BigDecimal op1) throws RemoteException {
-		this.saldo = saldo.add(op1);
-		return saldo;
+		this.saldo = this.saldo.add(op1);
+		return this.saldo;
 	}
 
 	@Override
 	public BigDecimal saque(BigDecimal valor) throws RemoteException {
-		double aux = saldo.doubleValue() - valor.doubleValue();
+		double aux = this.saldo.doubleValue() - valor.doubleValue();
 		if(aux >= 0){
 			this.saldo = new BigDecimal(aux);
 		}
-		return saldo;
+		return this.saldo;
 	}
 
 	@Override
 	public BigDecimal saldo() throws RemoteException {
-		return saldo;
+		return this.saldo;
 	}
 	
 	public static void main(String args[]) {
