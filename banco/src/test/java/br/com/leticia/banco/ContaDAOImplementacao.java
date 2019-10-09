@@ -45,4 +45,36 @@ public class ContaDAOImplementacao implements ContaDAO {
 			}
 		}
 	}
+	public boolean inserir(Conta conta) {
+		PreparedStatement ps = null;
+		int rs;
+		String url;
+		Connection conexaoBanco = null;
+		try {
+			url = "jdbc:postgresql://localhost/banco?user=postgres&password=postgres";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("insert into contas (id, nome, saldo) values (?,?,?)");
+			ps.setInt(1, conta.getId());
+			ps.setString(2, conta.getNome());
+			ps.setBigDecimal(3, conta.getSaldo());
+			rs = ps.executeUpdate();
+
+			if (rs > 0 ) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
