@@ -1,2 +1,3 @@
-CREATE TABLES contas nome name, identificador integer,  saldo money)
-INSERT INTO contas (nome, identificador, saldo) VALUES ('Diego', 1, 20;01)
+CREATE TABLE contas (nome name, identificador integer, saldo MONEY);
+
+INSERT INTO contas (nome, identificador, saldo) VALUES ('Diego', 1, 20.01);
