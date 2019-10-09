@@ -4,16 +4,19 @@ package br.com.leticia.banco;
  * Hello world!
  *
  */
-public class Main 
-{
-    public static void main( String[] args )
-    {
-       ContaDAO conta = new ContaDAOImplementacao();
-       
-       String nome1 = conta.consultar("Diego");
-       String nome2 = conta.consultar("Guedes");
-       
-       System.out.println(nome1);
-       System.out.println(nome2);
-    }
+public class Main {
+	public static void main(String[] args) {
+		ContaDAO contaDAO = new ContaDAOImplementacao();
+
+		Conta contaDiego = contaDAO.consultar("Diego");
+
+		System.out.println(contaDiego.toString());
+
+		Conta contaJoao = contaDAO.consultar("Joao");
+
+		if (contaJoao != null)
+			System.out.println(contaJoao.toString());
+		else
+			System.out.println("Conta não encontrada");
+	}
 }
