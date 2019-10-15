@@ -1,5 +1,6 @@
 package br.com.leticia.banco;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://localhost/banco?user=postgres&password=postgres";
+			url = "jdbc:postgresql://localhost/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where nome=?");
 			ps.setString(1, nome);
@@ -51,7 +52,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try {
-			url = "jdbc:postgresql://localhost/banco?user=postgres&password=postgres";
+			url = "jdbc:postgresql://localhost/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("insert into contas (id, nome, saldo) values (?,?,?)");
 			ps.setInt(1, conta.getId());
@@ -64,6 +65,37 @@ public class ContaDAOImplementacao implements ContaDAO {
 			} else {
 				return false;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (conexaoBanco != null) {
+				try {
+					conexaoBanco.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public boolean depositar(String nome, BigDecimal valor) {
+		PreparedStatement ps = null;
+		int rs;
+		String url;
+		Connection conexaoBanco = null;
+		ResultSet ls;
+		try {
+			Conta conta;
+			conta = new Conta();
+			url = "jdbc:postgresql://localhost/postgres?user=postgres&password=@Wonder777";
+			conexaoBanco = DriverManager.getConnection(url);
+			ps = conexaoBanco.prepareStatement("insert into contas (saldo) values (?) where nome=(?)");
+			ps.setString(1, nome);
+			ps.setBigDecimal(2, conta.getSaldo().add(valor));
+			rs = ps.executeUpdate();
+			
+			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

@@ -31,5 +31,8 @@ public class Main {
 
 		if (contaJoao != null)
 			System.out.println(contaJoao.toString());
+		
+		boolean contaDiego1 = contaDAO.depositar("Diego", new BigDecimal("200"));
+		
 	}
 }
