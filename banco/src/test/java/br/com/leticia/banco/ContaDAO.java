@@ -1,9 +1,11 @@
 package br.com.leticia.banco;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public interface ContaDAO {
 	public Conta consultar(String nome);
-	public boolean inserir(Conta conta);
-	public boolean depositar(String nome, BigDecimal valor);
+	public Conta consultar(Integer id);
+	public boolean inserir (Conta conta);
+	public boolean excluir (Conta conta);
+	public List<Conta> listar(String nome);
 }
