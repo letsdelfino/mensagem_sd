@@ -18,7 +18,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://172.16.5.130/banco?user=postgres&password=diego";
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where nome=?");
 			ps.setString(1, nome);
@@ -55,7 +55,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try {
-			url = "jdbc:postgresql://172.16.5.130/banco?user=postgres&password=diego";
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("insert into contas (id, nome, saldo) values (?,?,?)");
 			ps.setInt(1, conta.getId());
@@ -91,7 +91,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		Connection conexaoBanco = null;
 		Conta conta;
 		try {
-			url = "jdbc:postgresql://172.16.5.130/banco?user=postgres&password=diego";
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas where id=?");
 			ps.setInt(1, id);
@@ -128,7 +128,7 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try {
-			url = "jdbc:postgresql://172.16.5.130/banco?user=postgres&password=diego";
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("delete from contas where id=?");
 			ps.setInt(1, conta.getId());
@@ -158,16 +158,16 @@ public class ContaDAOImplementacao implements ContaDAO {
 		String url;
 		Connection conexaoBanco = null;
 		try{
-			url = "jdbc:postgresql://172.16.5.130/banco?user=postgres&password=diego";
+			url = "jdbc:postgresql://127.0.0.1/postgres?user=postgres&password=@Wonder777";
 			conexaoBanco = DriverManager.getConnection(url);
 			ps = conexaoBanco.prepareStatement("select id, nome, saldo from contas");
 			try (ResultSet rs = ps.executeQuery()) {
 				List<Conta> conta = new ArrayList<>();
 				while (rs.next()) {
 					Conta c = new Conta();
-					c.getNome();
-					c.getId();
-					c.getSaldo();
+					c.setId(rs.getInt("id"));
+					c.setNome(rs.getString("nome"));
+					c.setSaldo(rs.getBigDecimal("saldo"));
 					
 					conta.add(c);
 				}
