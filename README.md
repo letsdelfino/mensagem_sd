@@ -17,4 +17,4 @@ Os projetos presentes aqui são:
 
 6 - Banco RMI: https://github.com/letsdelfino/mensagem_sd/tree/master/banco_rmi
 
-7 - Bacno (projeto final): https://github.com/letsdelfino/mensagem_sd/tree/master/banco
+7 - Banco: https://github.com/letsdelfino/mensagem_sd/tree/master/banco
